@@ -1,0 +1,77 @@
+═══════════════════════════════════════════════════════════════
+            APPOINTMENT CONFIRMATION
+═══════════════════════════════════════════════════════════════
+
+Dear <%= @user.full_name %>,
+
+Your appointment has been successfully confirmed!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+APPOINTMENT DETAILS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Appointment ID: #<%= @appointment.id %>
+Status: <%= @appointment.status.capitalize %>
+
+Date & Time: <%= @appointment.appointment_date.strftime("%A, %B %d, %Y at %I:%M %p") %>
+
+<% if @appointment.notes.present? %>
+Your Notes: <%= @appointment.notes %>
+<% end %>
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DOCTOR INFORMATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Doctor Name: Dr. <%= @doctor.user.full_name %>
+Specialization: <%= @doctor.specialization %>
+
+<% if @doctor.qualifications.present? %>
+Qualifications: <%= @doctor.qualifications %>
+<% end %>
+
+<% if @doctor.experience_years.present? && @doctor.experience_years > 0 %>
+Experience: <%= @doctor.experience_years %> years
+<% end %>
+
+<% if @doctor.rating.present? && @doctor.rating > 0 %>
+Rating: <%= sprintf("%.1f", @doctor.rating) %>/5.0 ⭐ (<%= @doctor.total_reviews || 0 %> reviews)
+<% end %>
+
+<% if @doctor.user.phone.present? %>
+Contact Number: <%= @doctor.user.phone %>
+<% end %>
+
+<% if @doctor.user.email.present? %>
+Email: <%= @doctor.user.email %>
+<% end %>
+
+<% if @doctor.license_number.present? %>
+License Number: <%= @doctor.license_number %>
+<% end %>
+
+<% if @doctor.description.present? %>
+About Dr. <%= @doctor.user.full_name %>:
+<%= @doctor.description %>
+<% end %>
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+IMPORTANT REMINDERS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Please arrive 10 minutes early for your appointment
+• Bring any relevant medical records or documents
+• If you need to cancel or reschedule, please do so at least 24 hours in advance
+• You can manage your appointments by logging into your account
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Thank you for choosing Healthcare Portal!
+
+Best regards,
+Healthcare Portal Team
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+This is an automated email. Please do not reply to this message.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+

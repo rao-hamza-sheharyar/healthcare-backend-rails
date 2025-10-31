@@ -1,0 +1,26 @@
+Reschedule Request - Healthcare Portal
+
+Dear Dr. <%= @doctor.user.full_name %>,
+
+You have received a reschedule request from <%= @user.full_name %>.
+
+Appointment Details:
+- Patient: <%= @user.full_name %>
+- Email: <%= @user.email %>
+<% if @user.phone.present? %>
+- Phone: <%= @user.phone %>
+<% end %>
+- Current Appointment Date: <%= @appointment.appointment_date.strftime("%B %d, %Y at %I:%M %p") %>
+
+Reschedule Request:
+- Requested New Date: <%= @appointment.reschedule_requested_date.strftime("%B %d, %Y at %I:%M %p") %>
+- Reason: <%= @appointment.reschedule_reason %>
+
+Please log in to your doctor dashboard to approve or reject this request.
+
+Thank you!
+
+Best regards,
+Healthcare Portal Team
+
+

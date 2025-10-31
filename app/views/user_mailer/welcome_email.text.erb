@@ -1,0 +1,24 @@
+Welcome to Healthcare Portal!
+
+Dear <%= @user.full_name %>,
+
+Your account has been created successfully. Here are your login credentials:
+
+Email: <%= @user.email %>
+Password: <%= @password %>
+
+<% if @user.role == 'doctor' %>
+Please log in at the Doctor Dashboard: <%= ENV['DOCTOR_FRONTEND_URL'] || 'http://localhost:5174' %>/login
+<% elsif @user.role == 'admin' %>
+Please log in at the Admin Portal: <%= ENV['ADMIN_FRONTEND_URL'] || 'http://localhost:5175' %>/login
+<% else %>
+Please log in at: <%= ENV['FRONTEND_URL'] || 'http://localhost:5173' %>/login
+<% end %>
+
+For security reasons, we recommend changing your password after your first login.
+
+Thank you for choosing Healthcare Portal!
+
+Best regards,
+Healthcare Portal Team
+

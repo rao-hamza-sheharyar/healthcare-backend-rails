@@ -1,0 +1,28 @@
+Reschedule Request Approved - Healthcare Portal
+
+Dear <%= @user.full_name %>,
+
+Your reschedule request has been approved by Dr. <%= @doctor.user.full_name %>.
+
+Your appointment has been rescheduled:
+
+Previous Date: <%= @old_date.strftime("%B %d, %Y at %I:%M %p") %>
+New Date: <%= @appointment.appointment_date.strftime("%B %d, %Y at %I:%M %p") %>
+
+The appointment status has been updated to "pending" and will need to be confirmed again.
+
+Doctor Details:
+- Name: Dr. <%= @doctor.user.full_name %>
+- Specialization: <%= @doctor.specialization %>
+<% if @doctor.user.phone.present? %>
+- Phone: <%= @doctor.user.phone %>
+<% end %>
+
+Please make a note of the new appointment date and time.
+
+Thank you!
+
+Best regards,
+Healthcare Portal Team
+
+

@@ -1,0 +1,29 @@
+Reschedule Request - Healthcare Portal
+
+Dear <%= @user.full_name %>,
+
+Your reschedule request has been reviewed by Dr. <%= @doctor.user.full_name %>.
+
+Unfortunately, your reschedule request could not be approved at this time.
+
+Your original appointment remains scheduled:
+
+Appointment Date: <%= @appointment.appointment_date.strftime("%B %d, %Y at %I:%M %p") %>
+
+If you have any concerns, please contact the clinic directly.
+
+Doctor Details:
+- Name: Dr. <%= @doctor.user.full_name %>
+- Specialization: <%= @doctor.specialization %>
+<% if @doctor.user.phone.present? %>
+- Phone: <%= @doctor.user.phone %>
+<% end %>
+
+We look forward to seeing you at your scheduled appointment time.
+
+Thank you!
+
+Best regards,
+Healthcare Portal Team
+
+

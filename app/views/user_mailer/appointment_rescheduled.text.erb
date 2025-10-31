@@ -1,0 +1,33 @@
+Appointment Rescheduled - Healthcare Portal
+
+Dear <%= @user.full_name %>,
+
+Your appointment with Dr. <%= @doctor.user.full_name %> has been rescheduled.
+
+Previous Date & Time: <%= @old_date.strftime("%B %d, %Y at %I:%M %p") %>
+New Date & Time: <%= @appointment.appointment_date.strftime("%B %d, %Y at %I:%M %p") %>
+
+<% if @appointment.status == 'approved' %>
+This appointment has been confirmed. Please make a note of the new date and time.
+
+Doctor Details:
+- Name: Dr. <%= @doctor.user.full_name %>
+- Specialization: <%= @doctor.specialization %>
+<% if @doctor.user.phone.present? %>
+- Phone: <%= @doctor.user.phone %>
+<% end %>
+
+We look forward to seeing you at the new scheduled time.
+
+<% else %>
+The appointment is currently pending approval. You will receive a confirmation email once the doctor approves the new time.
+<% end %>
+
+If you have any questions or concerns, please contact us.
+
+Thank you!
+
+Best regards,
+Healthcare Portal Team
+
+

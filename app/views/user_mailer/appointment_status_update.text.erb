@@ -1,0 +1,17 @@
+Appointment Status Update
+
+Dear <%= @user.full_name %>,
+
+Your appointment status has been updated.
+
+Doctor: Dr. <%= @doctor.user.full_name %>
+Date & Time: <%= @appointment.appointment_date.to_s(:long) %>
+Status: <%= @appointment.status.capitalize %>
+<% if @appointment.rejection_reason.present? %>
+Reason: <%= @appointment.rejection_reason %>
+<% end %>
+
+Best regards,
+Healthcare Portal Team
+
+
