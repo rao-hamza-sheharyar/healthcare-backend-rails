@@ -5,7 +5,7 @@
     "buildCommand": "bundle install && bundle exec rails assets:precompile"
   },
   "deploy": {
-    "startCommand": "bundle exec rails server -b 0.0.0.0 -p $PORT",
+    "startCommand": "bundle exec puma -C config/puma.rb",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
   }
