@@ -1,7 +1,7 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     # Allow specific origins for production
-    origins(
+    origins_list = [
       # Local development
       "http://localhost:5173",  # Client frontend
       "http://localhost:5174",  # Doctor frontend
@@ -10,7 +10,9 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
       ENV['FRONTEND_CLIENT_URL'],
       ENV['FRONTEND_DOCTOR_URL'],
       ENV['FRONTEND_ADMIN_URL']
-    ).compact
+    ].compact.reject(&:blank?)
+    
+    origins(*origins_list)
     
     resource "*",
       headers: :any,
