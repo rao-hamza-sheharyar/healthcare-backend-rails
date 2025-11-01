@@ -1,13 +1,7 @@
 class JwtService
   def self.secret_key
-    if Rails.application.credentials.secret_key_base.present?
-      Rails.application.credentials.secret_key_base
-    elsif Rails.application.secrets.secret_key_base.present?
-      Rails.application.secrets.secret_key_base
-    else
-      # Fallback for development - in production, use credentials or env variable
-      ENV['SECRET_KEY_BASE'] || 'development-secret-key-change-in-production-use-credentials'
-    end
+    # Rails 8.1 removed Rails.application.secrets - use secret_key_base directly
+    Rails.application.secret_key_base || ENV['SECRET_KEY_BASE'] || 'development-secret-key-change-in-production-use-credentials'
   end
   
   def self.encode(payload, exp = 24.hours.from_now)
