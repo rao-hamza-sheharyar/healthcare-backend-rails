@@ -9,7 +9,9 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
       # Production (update with actual Vercel URLs after deployment)
       ENV['FRONTEND_CLIENT_URL'],
       ENV['FRONTEND_DOCTOR_URL'],
-      ENV['FRONTEND_ADMIN_URL']
+      ENV['FRONTEND_ADMIN_URL'],
+      # Vercel preview deployments (wildcard pattern)
+      /\.vercel\.app$/
     ].compact.reject(&:blank?)
     
     origins(*origins_list)
