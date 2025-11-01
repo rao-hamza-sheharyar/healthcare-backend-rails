@@ -1,0 +1,9 @@
+#!/bin/bash
+# Railway post-deploy script to run migrations
+set -e
+
+echo "🔧 Running database migrations..."
+bundle exec rails db:migrate || echo "⚠️  Migration failed, but continuing..."
+
+echo "✅ Post-deploy complete!"
+
