@@ -6,7 +6,7 @@ Rails.application.configure do
   # Secret key base - read from environment variable
   config.secret_key_base = ENV.fetch("SECRET_KEY_BASE") do
     # Fallback: generate a temporary key (NOT SECURE - should be set in Railway!)
-    Rails.logger.warn "⚠️  SECRET_KEY_BASE not set! Using temporary key. Set SECRET_KEY_BASE in Railway Variables!"
+    STDERR.puts "⚠️  SECRET_KEY_BASE not set! Using temporary key. Set SECRET_KEY_BASE in Railway Variables!"
     SecureRandom.hex(64)
   end
 
